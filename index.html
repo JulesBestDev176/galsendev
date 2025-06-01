@@ -10,6 +10,10 @@
             margin: 20mm;
         }
         
+        * {
+            box-sizing: border-box;
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
@@ -17,11 +21,12 @@
             margin: 0;
             padding: 0;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
         
         .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin: 20px auto;
             background: white;
             padding: 30px;
             border-radius: 15px;
@@ -31,21 +36,21 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            margin: 0;
+            font-weight: bold;
             background: linear-gradient(45deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-        
-        .header h1 {
-            font-size: 3em;
-            margin: 0;
-            font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
         
         .header p {
-            font-size: 1.2em;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
             margin: 10px 0;
             color: #666;
             font-weight: 500;
@@ -61,18 +66,18 @@
         }
         
         .hero-section h2 {
-            font-size: 2em;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             margin: 0 0 15px 0;
         }
         
         .hero-section p {
-            font-size: 1.1em;
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
             margin: 0;
         }
         
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             margin: 30px 0;
         }
@@ -82,22 +87,24 @@
             padding: 20px;
             border-radius: 10px;
             border-left: 4px solid #667eea;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
         .feature-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.15);
         }
         
         .feature-card h3 {
             color: #667eea;
             margin: 0 0 10px 0;
-            font-size: 1.2em;
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
         }
         
         .feature-card p {
             margin: 0;
             color: #666;
+            font-size: clamp(0.85rem, 2vw, 1rem);
         }
         
         .benefits {
@@ -111,27 +118,30 @@
             color: #667eea;
             text-align: center;
             margin-bottom: 20px;
+            font-size: clamp(1.3rem, 3vw, 1.5rem);
         }
         
         .benefits-list {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 15px;
         }
         
         .benefit-item {
             display: flex;
             align-items: center;
-            padding: 10px;
+            padding: 12px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-size: clamp(0.85rem, 2vw, 1rem);
         }
         
         .benefit-item::before {
             content: "✅";
             margin-right: 10px;
             font-size: 1.2em;
+            flex-shrink: 0;
         }
         
         .join-section {
@@ -145,13 +155,13 @@
         
         .join-section h2 {
             margin: 0 0 20px 0;
-            font-size: 1.8em;
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
         }
         
         .links-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
             flex-wrap: wrap;
             margin: 20px 0;
         }
@@ -165,6 +175,9 @@
             font-weight: bold;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            min-width: 140px;
+            text-align: center;
+            font-size: clamp(0.9rem, 2vw, 1rem);
         }
         
         .link-button:hover {
@@ -180,11 +193,12 @@
             color: #667eea;
             text-align: center;
             margin-bottom: 20px;
+            font-size: clamp(1.3rem, 3vw, 1.5rem);
         }
         
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             text-align: center;
         }
@@ -195,6 +209,7 @@
             padding: 15px;
             border-radius: 10px;
             font-weight: bold;
+            font-size: clamp(0.8rem, 2vw, 1rem);
         }
         
         .footer {
@@ -210,12 +225,6 @@
             margin-bottom: 10px;
         }
         
-        .social-links {
-            margin: 15px 0;
-            font-size: 0.9em;
-            color: #666;
-        }
-        
         .quote {
             background: #e8f4fd;
             border-left: 4px solid #48c6ef;
@@ -228,13 +237,13 @@
         
         .quote p {
             margin: 0;
-            font-size: 1.1em;
+            font-size: clamp(1rem, 2.5vw, 1.1rem);
             color: #2c5aa0;
         }
         
         .profile-image {
-            width: 100px;
-            height: 100px;
+            width: clamp(70px, 15vw, 100px);
+            height: clamp(70px, 15vw, 100px);
             border-radius: 50%;
             margin: 0 auto 15px auto;
             background-image: url('jules.jpg');
@@ -244,13 +253,240 @@
             box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
         }
         
+        .ambassador-section {
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #667eea;
+        }
+        
+        .ambassador-section h3 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+        }
+        
+        .ambassador-content {
+            text-align: center;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .ambassador-content p {
+            margin: 5px 0;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+        }
+        
+        .ambassador-content a {
+            color: #667eea;
+            text-decoration: underline;
+            word-break: break-word;
+        }
+        
+        .all-links-section {
+            background: #f8f9ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+        
+        .all-links-section h3 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+        }
+        
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .link-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .link-card p {
+            margin: 5px 0;
+            font-size: clamp(0.85rem, 2vw, 1rem);
+        }
+        
+        .link-card a {
+            color: #48c6ef;
+            text-decoration: underline;
+            word-break: break-word;
+        }
+        
+        .social-footer {
+            text-align: center;
+            font-size: clamp(0.8rem, 1.8vw, 0.9rem);
+            color: #666;
+        }
+        
+        /* Media Queries pour des ajustements spécifiques */
+        
+        /* Tablettes */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                padding: 20px;
+                border-radius: 10px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .benefits-list {
+                grid-template-columns: 1fr;
+            }
+            
+            .events-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .links-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .link-button {
+                width: 100%;
+                max-width: 300px;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Mobiles */
+        @media (max-width: 480px) {
+            body {
+                padding: 5px;
+            }
+            
+            .container {
+                margin: 5px;
+                padding: 15px;
+                border-radius: 8px;
+            }
+            
+            .hero-section,
+            .benefits,
+            .join-section,
+            .ambassador-section,
+            .all-links-section {
+                padding: 15px;
+            }
+            
+            .feature-card {
+                padding: 15px;
+            }
+            
+            .events-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote {
+                padding: 15px;
+                margin: 15px 0;
+            }
+        }
+        
+        /* Très petits écrans */
+        @media (max-width: 360px) {
+            .container {
+                padding: 10px;
+                margin: 2px;
+            }
+            
+            .feature-card,
+            .benefits,
+            .join-section,
+            .ambassador-section,
+            .all-links-section {
+                padding: 12px;
+            }
+            
+            .link-button {
+                padding: 10px 20px;
+                min-width: 120px;
+            }
+        }
+        
+        /* Grands écrans */
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1000px;
+            }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .benefits-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .events-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Mode impression */
         @media print {
             body {
                 background: white;
             }
+            
             .container {
                 box-shadow: none;
+                max-width: 100%;
+                margin: 0;
+                padding: 15px;
             }
+            
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .benefits-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .events-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Animations et transitions fluides */
+        @media (prefers-reduced-motion: no-preference) {
+            .feature-card,
+            .link-button {
+                transition: all 0.3s ease;
+            }
+        }
+        
+        /* Mode sombre (si supporté) */
+        @media (prefers-color-scheme: dark) {
+            /* Optionnel: ajuster les couleurs pour le mode sombre */
         }
     </style>
 </head>
@@ -320,39 +556,39 @@
             </div>
         </div>
         
-        <div class="ambassador-section" style="background: #f0f8ff; padding: 20px; border-radius: 10px; margin: 20px 0; border: 2px dashed #667eea;">
-            <h3 style="color: #667eea; text-align: center; margin-bottom: 15px;">👨‍💼 Ton Ambassadeur Campus</h3>
-            <div style="text-align: center; background: white; padding: 15px; border-radius: 8px;">
+        <div class="ambassador-section">
+            <h3>👨‍💼 Ton Ambassadeur Campus</h3>
+            <div class="ambassador-content">
                 <div class="profile-image"></div>
-                <p style="margin: 5px 0; font-weight: bold; color: #333;">🎓 Souleymane Fall</p>
-                <p style="margin: 5px 0; color: #666;">Étudiant en L3 Génie Logiciel</p>
-                <p style="margin: 5px 0; color: #667eea;"><a href="mailto:souleymanefallpro@gmail.com" style="color: #667eea; text-decoration: underline;">📧 souleymanefallpro@gmail.com</a></p>
-                <p style="margin: 5px 0; color: #667eea;"><a href="https://wa.me/221777151061" style="color: #667eea; text-decoration: underline;">📱 +221 77 715 10 61</a></p>
-                <p style="margin: 10px 0 5px 0; font-style: italic; color: #888; font-size: 0.9em;">N'hésite pas à me contacter pour toute question !</p>
+                <p style="font-weight: bold; color: #333;">🎓 Souleymane Fall</p>
+                <p style="color: #666;">Étudiant en L3 Génie Logiciel</p>
+                <p><a href="mailto:souleymanefallpro@gmail.com">📧 souleymanefallpro@gmail.com</a></p>
+                <p><a href="https://wa.me/221777151061">📱 +221 77 715 10 61</a></p>
+                <p style="font-style: italic; color: #888; font-size: 0.9em; margin-top: 10px;">N'hésite pas à me contacter pour toute question !</p>
             </div>
         </div>
 
-        <div class="all-links-section" style="background: #f8f9ff; padding: 25px; border-radius: 10px; margin: 20px 0;">
-            <h3 style="color: #667eea; text-align: center; margin-bottom: 20px;">🔗 Tous nos canaux officiels</h3>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; margin-bottom: 20px;">
-                <div style="background: white; padding: 15px; border-radius: 8px; text-align: center;">
-                    <p style="margin: 5px 0; font-weight: bold; color: #667eea;">💬 Discord (Principal)</p>
-                    <a href="https://discord.gg/CKZcKqf" style="color: #48c6ef; text-decoration: underline;">discord.gg/CKZcKqf</a>
+        <div class="all-links-section">
+            <h3>🔗 Tous nos canaux officiels</h3>
+            <div class="links-grid">
+                <div class="link-card">
+                    <p style="font-weight: bold; color: #667eea;">💬 Discord (Principal)</p>
+                    <a href="https://discord.gg/CKZcKqf">discord.gg/CKZcKqf</a>
                 </div>
-                <div style="background: white; padding: 15px; border-radius: 8px; text-align: center;">
-                    <p style="margin: 5px 0; font-weight: bold; color: #667eea;">🌐 Site Web</p>
-                    <a href="https://galsen.dev" style="color: #48c6ef; text-decoration: underline;">galsen.dev</a>
+                <div class="link-card">
+                    <p style="font-weight: bold; color: #667eea;">🌐 Site Web</p>
+                    <a href="https://galsen.dev">galsen.dev</a>
                 </div>
-                <div style="background: white; padding: 15px; border-radius: 8px; text-align: center;">
-                    <p style="margin: 5px 0; font-weight: bold; color: #667eea;">📱 WhatsApp</p>
-                    <a href="https://chat.whatsapp.com/EzigxN1N2bZBdxooqaH2Gr" style="color: #48c6ef; text-decoration: underline;">Rejoindre le groupe</a>
+                <div class="link-card">
+                    <p style="font-weight: bold; color: #667eea;">📱 WhatsApp</p>
+                    <a href="https://chat.whatsapp.com/EzigxN1N2bZBdxooqaH2Gr">Rejoindre le groupe</a>
                 </div>
-                <div style="background: white; padding: 15px; border-radius: 8px; text-align: center;">
-                    <p style="margin: 5px 0; font-weight: bold; color: #667eea;">📱 Réseaux Sociaux</p>
-                    <p style="margin: 5px 0; font-size: 0.9em; color: #666;">@GalsenDEV partout</p>
+                <div class="link-card">
+                    <p style="font-weight: bold; color: #667eea;">📱 Réseaux Sociaux</p>
+                    <p style="color: #666;">@GalsenDEV partout</p>
                 </div>
             </div>
-            <div style="text-align: center; font-size: 0.9em; color: #666;">
+            <div class="social-footer">
                 <p><strong>Suivez-nous sur :</strong> Facebook | Instagram | Telegram | LinkedIn | X (Twitter) | YouTube | GitHub</p>
             </div>
         </div>
